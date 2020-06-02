@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 08/11/2016 17:45:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Funcionario" table="funcionario" catalog="empresa" optimistic-lock="version">
+        <id name="idFuncionario" type="java.lang.Integer">
+            <column name="idFuncionario" />
+            <generator class="identity" />
+        </id>
+        <property name="nome" type="string">
+            <column name="nome" length="50" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="30" />
+        </property>
+        <property name="cpf" type="string">
+            <column name="cpf" length="20" />
+        </property>
+        <property name="rg" type="string">
+            <column name="rg" length="20" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="30" />
+        </property>
+        <property name="dataNascimento" type="string">
+            <column name="dataNascimento" length="20" />
+        </property>
+        <property name="telefone" type="string">
+            <column name="telefone" length="20" />
+        </property>
+        <property name="data" type="string">
+            <column name="data" length="30" />
+        </property>
+        <property name="estadoCivil" type="string">
+            <column name="estadoCivil" length="30" />
+        </property>
+        <property name="uf" type="string">
+            <column name="uf" length="30" />
+        </property>
+        <property name="cep" type="string">
+            <column name="cep" length="20" />
+        </property>
+        <property name="endereco" type="string">
+            <column name="endereco" length="50" />
+        </property>
+        <property name="cidade" type="string">
+            <column name="cidade" length="30" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" length="30" />
+        </property>
+        <property name="complemento" type="string">
+            <column name="complemento" length="20" />
+        </property>
+        <property name="bairro" type="string">
+            <column name="bairro" length="30" />
+        </property>
+        <set name="funcionariodepartamentos" table="funcionariodepartamento" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idFuncionario" not-null="true" />
+            </key>
+            <one-to-many class="model.Funcionariodepartamento" />
+        </set>
+    </class>
+</hibernate-mapping>

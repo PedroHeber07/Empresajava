@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e6aa2e7-ce13-401f-933c-7ed48067f671">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="133"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="PieChartDataset" uuid="90df96cb-e7d4-4a06-8d1d-3a99b03d08e7"/>
+	<subDataset name="DepartamentoDataSet" uuid="e1aa6a83-07bb-46ee-8d32-7d513825e1e7">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     departamento.`setor` AS departamento_setor,
+     departamento.`codigo` AS departamento_codigo
+FROM
+     `departamento` departamento]]>
+		</queryString>
+		<field name="departamento_setor" class="java.lang.String"/>
+		<field name="departamento_codigo" class="java.lang.String"/>
+		<group name="departamento_setor">
+			<groupExpression><![CDATA[$F{departamento_setor}]]></groupExpression>
+		</group>
+		<group name="departamento_codigo">
+			<groupExpression><![CDATA[$F{departamento_codigo}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="FuncionarioDataset" uuid="ab18c595-b1e3-409a-8e13-b7437ede39a7">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     funcionario.`idFuncionario` AS funcionario_idFuncionario,
+     funcionario.`nome` AS funcionario_nome,
+     funcionario.`sexo` AS funcionario_sexo,
+     funcionario.`cpf` AS funcionario_cpf,
+     funcionario.`rg` AS funcionario_rg,
+     funcionario.`email` AS funcionario_email,
+     funcionario.`dataNascimento` AS funcionario_dataNascimento,
+     funcionario.`telefone` AS funcionario_telefone,
+     funcionario.`data` AS funcionario_data,
+     funcionario.`estadoCivil` AS funcionario_estadoCivil,
+     funcionario.`uf` AS funcionario_uf,
+     funcionario.`cep` AS funcionario_cep,
+     funcionario.`endereco` AS funcionario_endereco,
+     funcionario.`cidade` AS funcionario_cidade,
+     funcionario.`numero` AS funcionario_numero,
+     funcionario.`complemento` AS funcionario_complemento,
+     funcionario.`bairro` AS funcionario_bairro,
+     departamento.`idDepartamento` AS departamento_idDepartamento,
+     departamento.`setor` AS departamento_setor,
+     departamento.`codigo` AS departamento_codigo
+FROM
+     `funcionario` funcionario,
+     `departamento` departamento]]>
+		</queryString>
+		<field name="funcionario_idFuncionario" class="java.lang.Long"/>
+		<field name="funcionario_nome" class="java.lang.String"/>
+		<field name="funcionario_sexo" class="java.lang.String"/>
+		<field name="funcionario_cpf" class="java.lang.String"/>
+		<field name="funcionario_rg" class="java.lang.String"/>
+		<field name="funcionario_email" class="java.lang.String"/>
+		<field name="funcionario_dataNascimento" class="java.lang.String"/>
+		<field name="funcionario_telefone" class="java.lang.String"/>
+		<field name="funcionario_data" class="java.lang.String"/>
+		<field name="funcionario_estadoCivil" class="java.lang.String"/>
+		<field name="funcionario_uf" class="java.lang.String"/>
+		<field name="funcionario_cep" class="java.lang.String"/>
+		<field name="funcionario_endereco" class="java.lang.String"/>
+		<field name="funcionario_cidade" class="java.lang.String"/>
+		<field name="funcionario_numero" class="java.lang.String"/>
+		<field name="funcionario_complemento" class="java.lang.String"/>
+		<field name="funcionario_bairro" class="java.lang.String"/>
+		<field name="departamento_idDepartamento" class="java.lang.Long"/>
+		<field name="departamento_setor" class="java.lang.String"/>
+		<field name="departamento_codigo" class="java.lang.String"/>
+		<group name="funcionario_nome">
+			<groupExpression><![CDATA[$F{funcionario_nome}]]></groupExpression>
+		</group>
+		<group name="funcionario_cpf">
+			<groupExpression><![CDATA[$F{funcionario_cpf}]]></groupExpression>
+		</group>
+		<group name="funcionario_sexo">
+			<groupExpression><![CDATA[$F{funcionario_sexo}]]></groupExpression>
+		</group>
+		<group name="funcionario_uf">
+			<groupExpression><![CDATA[$F{funcionario_uf}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="EmpresaDataSet" uuid="c22d16bc-2d13-494b-8339-6191bf3bccb8">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     funcionariodepartamento.`idFuncionarioDepartamento` AS funcionariodepartamento_idFuncionarioDepartamento,
+     funcionariodepartamento.`idFuncionario` AS funcionariodepartamento_idFuncionario,
+     funcionariodepartamento.`idDepartamento` AS funcionariodepartamento_idDepartamento,
+     funcionario.`idFuncionario` AS funcionario_idFuncionario,
+     funcionario.`nome` AS funcionario_nome,
+     funcionario.`sexo` AS funcionario_sexo,
+     funcionario.`cpf` AS funcionario_cpf,
+     funcionario.`rg` AS funcionario_rg,
+     funcionario.`email` AS funcionario_email,
+     funcionario.`dataNascimento` AS funcionario_dataNascimento,
+     funcionario.`telefone` AS funcionario_telefone,
+     funcionario.`data` AS funcionario_data,
+     funcionario.`estadoCivil` AS funcionario_estadoCivil,
+     funcionario.`uf` AS funcionario_uf,
+     funcionario.`cep` AS funcionario_cep,
+     funcionario.`endereco` AS funcionario_endereco,
+     funcionario.`cidade` AS funcionario_cidade,
+     funcionario.`numero` AS funcionario_numero,
+     funcionario.`complemento` AS funcionario_complemento,
+     funcionario.`bairro` AS funcionario_bairro,
+     departamento.`idDepartamento` AS departamento_idDepartamento,
+     departamento.`setor` AS departamento_setor,
+     departamento.`codigo` AS departamento_codigo
+FROM
+     `funcionario` funcionario INNER JOIN `funcionariodepartamento` funcionariodepartamento ON funcionario.`idFuncionario` = funcionariodepartamento.`idFuncionario`
+     INNER JOIN `departamento` departamento ON funcionariodepartamento.`idDepartamento` = departamento.`idDepartamento`]]>
+		</queryString>
+		<field name="funcionariodepartamento_idFuncionarioDepartamento" class="java.lang.Long"/>
+		<field name="funcionariodepartamento_idFuncionario" class="java.lang.Long"/>
+		<field name="funcionariodepartamento_idDepartamento" class="java.lang.Long"/>
+		<field name="funcionario_idFuncionario" class="java.lang.Long"/>
+		<field name="funcionario_nome" class="java.lang.String"/>
+		<field name="funcionario_sexo" class="java.lang.String"/>
+		<field name="funcionario_cpf" class="java.lang.String"/>
+		<field name="funcionario_rg" class="java.lang.String"/>
+		<field name="funcionario_email" class="java.lang.String"/>
+		<field name="funcionario_dataNascimento" class="java.lang.String"/>
+		<field name="funcionario_telefone" class="java.lang.String"/>
+		<field name="funcionario_data" class="java.lang.String"/>
+		<field name="funcionario_estadoCivil" class="java.lang.String"/>
+		<field name="funcionario_uf" class="java.lang.String"/>
+		<field name="funcionario_cep" class="java.lang.String"/>
+		<field name="funcionario_endereco" class="java.lang.String"/>
+		<field name="funcionario_cidade" class="java.lang.String"/>
+		<field name="funcionario_numero" class="java.lang.String"/>
+		<field name="funcionario_complemento" class="java.lang.String"/>
+		<field name="funcionario_bairro" class="java.lang.String"/>
+		<field name="departamento_idDepartamento" class="java.lang.Long"/>
+		<field name="departamento_setor" class="java.lang.String"/>
+		<field name="departamento_codigo" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     departamento.`setor` AS departamento_setor,
+     departamento.`codigo` AS departamento_codigo
+FROM
+     `departamento` departamento]]>
+	</queryString>
+	<field name="departamento_setor" class="java.lang.String"/>
+	<field name="departamento_codigo" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<elementGroup/>
+			<crosstab>
+				<reportElement x="406" y="314" width="801" height="190" uuid="89673455-e3b0-418a-8cf2-eb38283b1cf7"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="EmpresaDataSet" uuid="7b01938e-5937-4205-825f-28a114051305">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="departamento_setor" width="70">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{departamento_setor}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="a3925dfb-db08-4f99-a0d5-688b85f2bb6d"/>
+								<textFieldExpression><![CDATA[$V{departamento_setor}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="funcionario_nome" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{funcionario_nome}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="da4fd06b-2011-4860-8c88-7158cdcfcfbf"/>
+								<textFieldExpression><![CDATA[$V{funcionario_nome}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="190f3d21-9f24-486e-b9b6-62878509c959"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total funcionario_nome]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="funcionariodepartamento_idFuncionarioMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{funcionariodepartamento_idFuncionario}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="d8564c33-f8c9-4a26-bee0-b49eaa5c7fb6"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="departamento_setor">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="3a9c8071-c71a-437c-a7b1-9ce1c0d9f47e"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="funcionario_nome">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="2dc4496b-595b-42b1-b875-a094468f9b5b"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="departamento_setor" columnTotalGroup="funcionario_nome">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="ae8345f8-246d-4b45-901c-0ce486b0f136"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<staticText>
+				<reportElement x="429" y="248" width="373" height="52" uuid="4e6da696-fdf9-408b-b5c5-bde5504a8fb8"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Funcionários Cadastrados em cada Departamento:]]></text>
+			</staticText>
+			<crosstab>
+				<reportElement x="4" y="314" width="402" height="154" uuid="af6ad7c6-4c97-4c5d-b567-ee8bf6dcc18f"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="EmpresaDataSet" uuid="b5b5d3af-1188-4dcb-9d27-45cfe51cff7a">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="departamento_setor" width="70">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{departamento_setor}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="c7a5f25d-3906-47bf-8b0c-2eb4fa7280bd"/>
+								<textFieldExpression><![CDATA[$V{departamento_setor}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="funcionario_nome" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{funcionario_nome}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="3d69c9a7-2505-4d88-a756-7d0a6bc53278"/>
+								<textFieldExpression><![CDATA[$V{funcionario_nome}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="8e1d314a-20ca-4f0d-b336-5b79fcd901aa"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total funcionario_nome]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="funcionariodepartamento_idFuncionarioMeasure" class="java.lang.Long" calculation="Sum">
+					<measureExpression><![CDATA[$F{funcionariodepartamento_idFuncionario}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="36c87bbc-08b3-47c7-a8a4-b7e3a14c2bfa"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="departamento_setor">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="8019d26a-f3da-4f89-8e59-a0fb73de1040"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="funcionario_nome">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="0f09da70-8e8f-4282-a799-f116488c82b9"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="departamento_setor" columnTotalGroup="funcionario_nome">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="cbd9776a-56f6-459f-927e-70f941fb63e4"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+			<crosstab>
+				<reportElement x="0" y="136" width="325" height="178" uuid="2ef2ce32-902e-4771-a0c7-ba40712007d5"/>
+				<crosstabDataset>
+					<dataset>
+						<datasetRun subDataset="EmpresaDataSet" uuid="b147748f-5790-4fe1-b3e2-3dae915b7f2c">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+				</crosstabDataset>
+				<rowGroup name="departamento_setor" width="70" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{departamento_setor}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="70" height="25" uuid="302bb8e2-6ee6-4cc1-b4d8-98502bdf1f44"/>
+								<textFieldExpression><![CDATA[$V{departamento_setor}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="070d32dc-3042-4cfd-85b3-0b2fb8db2684"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total departamento_setor]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="REPORT_MAX_COUNT" height="30" totalPosition="End">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[$P{REPORT_MAX_COUNT}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="30" uuid="4f592a19-5b8b-4001-8d1f-9d106dd3b9c4"/>
+								<textFieldExpression><![CDATA[$V{REPORT_MAX_COUNT}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="30" uuid="c0b313d1-efaf-4096-9b08-5d7f22c4dd4c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Total REPORT_MAX_COUNT]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="funcionariodepartamento_idFuncionarioMeasure" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{funcionariodepartamento_idFuncionario}]]></measureExpression>
+				</measure>
+				<crosstabCell width="50" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="c0abbe28-1c66-4af0-a5c8-cb4c750c3618"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell height="25" rowTotalGroup="departamento_setor">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="cb0508be-8109-4617-a8bf-e37ccd45f957"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="50" columnTotalGroup="REPORT_MAX_COUNT">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="9ed12cf2-f03a-4b22-9a4b-d7f3eac0df31"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell rowTotalGroup="departamento_setor" columnTotalGroup="REPORT_MAX_COUNT">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="50" height="25" uuid="c70009c4-54d8-497c-9c65-27cba828689d"/>
+							<textFieldExpression><![CDATA[$V{funcionariodepartamento_idFuncionarioMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</background>
+	<title>
+		<band height="94" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="0" width="822" height="65" forecolor="#006699" backcolor="#006699" uuid="153ecff9-8c83-4b0f-9ef0-d8ab3f934080"/>
+				<staticText>
+					<reportElement style="Title" x="68" y="0" width="578" height="65" uuid="7a3f6d73-8e24-4578-831a-335e74aab450"/>
+					<textElement textAlignment="Right">
+						<font size="40" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Relatório de Departamento:]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="5fa505a0-5490-43de-8480-68a7fca01a09"/>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="0" y="0" width="287" height="14" forecolor="#000000" uuid="acba4e1e-7eb0-4984-8b60-5d2068b3f7e7"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Setor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" positionType="Float" x="287" y="0" width="287" height="14" forecolor="#000000" uuid="b2a32f38-e1e5-4297-b3d8-90f7e8372379"/>
+					<textElement>
+						<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="227" y="14" width="575" height="1" uuid="36e4a5f3-a8e4-406b-81fe-35e93f3e6b48"/>
+			</line>
+			<frame>
+				<reportElement x="227" y="0" width="575" height="14" uuid="5216bc1a-4dd9-4b0c-9410-7bee48b7d4e7"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="0" y="0" width="287" height="14" uuid="aec3d012-0ff4-4ed4-9df2-6cac3a12a818"/>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{departamento_setor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Detail" positionType="Float" x="287" y="0" width="287" height="14" uuid="2fc4e6a5-eee3-4a99-a00a-16fd49e82ca7"/>
+					<textElement>
+						<font fontName="Arial" size="16" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{departamento_codigo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="e8db998d-84fb-4e4d-877e-324707bbde12"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="16" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="800" height="16" forecolor="#D0B48E" backcolor="#006699" uuid="2bfc8a92-e23b-4da7-b36d-4bd4844bf53c"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="753" y="0" width="40" height="16" forecolor="#FFFFFF" uuid="fc961b94-4678-4c02-b11d-750c453becc7"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="673" y="0" width="80" height="16" forecolor="#FFFFFF" uuid="940bb5e3-11c7-4ce0-b288-b863e01cbf56"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="16" forecolor="#FFFFFF" uuid="08361c27-1ebb-4f5f-906d-fe07f247011c"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="12" isBold="false" pdfFontName="Helvetica"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
